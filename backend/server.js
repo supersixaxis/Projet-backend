@@ -1,6 +1,7 @@
 const express = require("express");
 const connectDB = require("./config/db");
 const dotenv = require("dotenv").config();
+const cors = require('cors');
 const port = 5000;
 
 
@@ -9,6 +10,7 @@ const port = 5000;
 connectDB();
 
 const app = express();
+app.use(cors());
 
 
 // Midddlewar qui permet de traiter les donnnées du "req (requeste)"
