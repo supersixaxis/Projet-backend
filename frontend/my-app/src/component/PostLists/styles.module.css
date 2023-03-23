@@ -1,0 +1,30 @@
+.container_post {
+    text-align: center;
+    justify-content: center;
+    list-style: none; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+ 
+}
+
+
+.post {
+    margin: auto ;
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+
+}
+
+.post li {
+    background-color: black;
+    color: white;
+    padding: 20px;
+    width: 500px;
+    
+    
+
+}
+

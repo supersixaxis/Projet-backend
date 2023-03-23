@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
+import styles from "./styles.module.css";
+import DeletePostButton from "../DeletePostButton/DeletePostButton";
+
 
 const PostsList = () => {
 
@@ -16,11 +19,12 @@ const PostsList = () => {
   }, []);
 
   return (
-    <div>
+    <div  className={styles.container_post}>
       <h1>Data from API:</h1>
-      <ul>
-        {data.map(post => (
-          <li key=''>{post.author} {post.message} {post.createdAt}   {post.likers}</li>
+      <ul className={styles.post}>
+        {data.map(post  => (
+          <li key={post._id}>{post.author} :  <p>{post.message}</p> Post crée le : {post.createdAt}   {post.likers}  <DeletePostButton postId={post._id}/></li>
+         
         ))}
       </ul>
     </div>

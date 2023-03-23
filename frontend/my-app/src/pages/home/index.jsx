@@ -1,13 +1,16 @@
-import PostList from '../../data/PostLists.js'
-import React from 'react'
-
+//import { useContext } from 'react';
+//import Api from '../../context/contextApi';
+import PostsList from '../../component/PostLists/PostLists';
+import CreatePostButton from '../../component/CreatePostButton/CreatePostButton.js'
+//import styles from "./styles.module.css";
 function Home() {
+
   return (
-    <div className="">
-    <h1>Yo </h1>
-    <PostList />
-  </div>
-  )
+    <div>
+      <CreatePostButton />
+      <PostsList />
+    </div>
+  );
 }
 
 export default Home
