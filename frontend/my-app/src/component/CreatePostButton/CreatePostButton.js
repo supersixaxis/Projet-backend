@@ -13,7 +13,7 @@ function CreatePostButton() {
         message,
       });
       console.log("Post created:", response.data);
-      // Faire quelque chose avec la réponse, par exemple rediriger vers la page du nouveau post.
+      window.location.reload() // Faire quelque chose avec la réponse, par exemple rediriger vers la page du nouveau post.
     } catch (error) {
       console.error("Error creating post:", error);
     }
