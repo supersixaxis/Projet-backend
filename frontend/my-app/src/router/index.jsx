@@ -1,7 +1,8 @@
 import React from 'react'
 import Home from '../pages/home/index'
 import { Outlet } from 'react-router-dom';
-
+import Login from '../pages/login/login'
+import SignUp from '../pages/signUp/signUp'
 export const RouteURl = [
   {
      path: "/",
@@ -9,18 +10,17 @@ export const RouteURl = [
      children: [
       {
         index: true,
-        element: <Home />,
+        element: <Login />,
 
       },
-    //   {
-    //     path:"A-propos",
-    //     element: <APropos />,
-    //   },
-    //   {
-    //     path:"Logement/:id",
-    //     element: <Logement/>
-
-    //   },
+      {
+        path:"home",
+        element: <Home />,
+      },
+      {
+        path:"inscription",
+        element: <SignUp/>
+      },
     //   {
     //     path:"*",
     //     element: <Error />,

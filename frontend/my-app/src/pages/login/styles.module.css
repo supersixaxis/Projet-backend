@@ -1,0 +1,18 @@
+.container_login {
+    display: flex;
+    background-color: aqua;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: 300px 
+}
+.container_login div {
+    padding: 10px;
+}
+.container_login label {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 10px;
+    font-size: 20px;
+}

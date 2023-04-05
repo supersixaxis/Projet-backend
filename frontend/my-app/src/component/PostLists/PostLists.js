@@ -31,7 +31,7 @@ const PostsList = () => {
           <li key={post._id}>{post.author} :  
           <p>{post.message}</p> Post crée le : {post.createdAt}   
           {post.likers}  <DeletePostButton postId={post._id} onDelete={handleDelete}/>
-          <EditPostButton postId={post._id} />
+          {/* <EditPostButton postId={post._id} /> */}
           </li>
          
         ))}
