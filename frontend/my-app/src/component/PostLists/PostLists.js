@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import styles from "./styles.module.css";
 import DeletePostButton from "../DeletePostButton/DeletePostButton";
-import EditPostButton from "../EditPostButton/EditPostButton";
+//import EditPostButton from "../EditPostButton/EditPostButton";
 
 
 const PostsList = () => {

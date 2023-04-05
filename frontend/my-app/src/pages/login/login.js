@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import { useNavigate } from "react-router";
 import Button from '../../component/Button';
 import styles from "./styles.module.css";
+
 export default function Login() {
+
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -29,7 +31,7 @@ export default function Login() {
              />
         </div>
         <div>
-        <label htmlFor="password">Mot de passe:</label>
+        <label htmlFor="password">Mot de passe : </label>
         <input
           required={true}
           type="password"
@@ -46,7 +48,12 @@ export default function Login() {
         >
         Se connecter</Button>
       </form>
-      <a href='/inscription'>Mot de passe oublié ?</a>
+      <Button
+      color= "login"
+      clickAction={() => navigate("/inscription")}
+        >
+        Creer un compte</Button>
+      <a href='/'>Mot de passe oublié ?</a>
     </div>
   );
 }
