@@ -9,12 +9,22 @@ module.exports.setPosts = async (req, res) => {
     if(!req.body.message){  // gérer si y'a pas de message 
         res.status(400).json({ message: "merci d'ajouter un message"});
     }
+    const postObject = JSON.parse(req.body.post); 
+    const post = new PostModels ({
+        ...postObject,
+        userId: req.auth.userId,
+    });
 
-    const post = await PostModels.create({ // creer le post dans la base de données quand on envoie un post
-        message: req.body.message,
-        author: req.body.author
-    })
-    res.status(200).json(post);
+    post.save()
+    .then(() => { res.status(201).json({ message: 'Objet enregistré !' }) })
+    .catch(error => { res.status(400).json({ error }) })
+
+
+    // const post = await PostModels.create({ // creer le post dans la base de données quand on envoie un post
+    //     message: req.body.message,
+    //     author: req.body.author
+    // })
+    // res.status(200).json(post);
 };
 
 module.exports.editPost = async (req, res) => {
@@ -33,14 +43,27 @@ module.exports.editPost = async (req, res) => {
 
 
 module.exports.deletePost = async (req, res) => {
-    const post = await PostModels.findById(req.params.id);
+    // const post = await PostModels.findById(req.params.id);
 
-    if (!post){
-        res.status(400).json( {message: "Ce post n'existe pas"}); // si on trouve pas le poste == erreur
-    }
+    // if (!post){
+    //     res.status(400).json( {message: "Ce post n'existe pas"}); // si on trouve pas le poste == erreur
+    // }
 
-    await post.deleteOne();
-    res.status(200).json("Message supprimé " + req.params.id);
+    // await post.deleteOne();
+    // res.status(200).json("Message supprimé " + req.params.id);
+    PostModels.findOne({ _id: req.params.id})
+    .then(post => {
+        if (post.userId != req.auth.userId) {
+            res.status(401).json({message: 'Not authorized'});
+        } else {
+                PostModels.deleteOne({_id: req.params.id})
+                    .then(() => { res.status(200).json({message: 'Objet supprimé !'})})
+                    .catch(error => res.status(401).json({ error }));
+        }
+    })
+    .catch( error => {
+        res.status(500).json({ error });
+    });
 
 };
 
